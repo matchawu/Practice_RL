@@ -122,8 +122,8 @@ class DQN(object):
         self.epsilon = 0.0
         self.update_count = 0
         
-        self.policy_net = CNN(self.state_dim[0], self.state_dim[1], self.action_dim).to(device) #
-        self.target_net = CNN(self.state_dim[0], self.state_dim[1], self.action_dim).to(device) #
+        self.policy_net = CNN(self.state_dim[0], self.state_dim[1], self.action_dim).to(device) # policy network
+        self.target_net = CNN(self.state_dim[0], self.state_dim[1], self.action_dim).to(device) # target network
         self.target_net.load_state_dict(self.policy_net.state_dict())
         self.target_net.eval()
         self.optimizer = optim.RMSprop(self.policy_net.parameters(), lr=self.LEARN_RATE)
