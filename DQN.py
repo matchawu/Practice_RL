@@ -106,7 +106,8 @@ class CNN(nn.Module):
         x = F.leaky_relu(self.fc(x.view(x.size(0), -1)))
         return self.head(x)
 
-actions = ["NOOP", "UP", "DOWN"]
+actions = ["NOOP", "UP", "DOWN"] ##### actions
+
 class DQN(object):
     def __init__(self):
         self.BATCH_SIZE = args.batch_size
