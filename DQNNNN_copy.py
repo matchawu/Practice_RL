@@ -18,6 +18,7 @@ class TicTacToeEnv(gym.Env):
         #1. Update the environment state based on the action chosen
         
         
+        
 
 
         #2. Calculate the "reward" for the new state
@@ -137,7 +138,7 @@ class  DQN_agent:
     
         if np.random.rand() <= self.epsilon: # Randomly select an action
             return self.env.action_space.sample()
-    
+
         act_values = self.model.predict(state)
             
         return np.argmax(act_values[0]) # maximize the Q-Function value
@@ -154,8 +155,7 @@ class  DQN_agent:
         '''
 
         if self.epsilon > self.epsilon_min:
-                self.epsilon *= self.epsilon_decay_r
-            
+                self.epsilon *= self.epsilon_decay_r            
         return
 
 
@@ -203,7 +203,7 @@ def train(agent, Episodes=500, batch_size = 32):
 
 if __name__ =="__main__":
     # environment
-    Env = gym.make('CartPole-v1')
+    Env = TicTacToeEnv(gym.Env)# gym.make('CartPole-v1') # change to my own env
     
     # agent
     agent = DQN_agent(Env)
